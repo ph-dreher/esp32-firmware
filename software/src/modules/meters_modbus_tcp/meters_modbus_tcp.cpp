@@ -93,6 +93,17 @@ void MetersModbusTCP::pre_setup()
         {"monophase_mapping", Config::Uint8(static_cast<uint8_t>(ShellyEMMonophaseMapping::None))},
     })});
 
+    Config siemens = Config::Object({
+        {"device_address", Config::Uint(1, 1, 247)},
+    });
+
+    table_prototypes.push_back({MeterModbusTCPTableID::SiemensPAC2200, siemens});
+    table_prototypes.push_back({MeterModbusTCPTableID::SiemensPAC3120, siemens});
+    table_prototypes.push_back({MeterModbusTCPTableID::SiemensPAC3200, siemens});
+    table_prototypes.push_back({MeterModbusTCPTableID::SiemensPAC3220, siemens});
+    table_prototypes.push_back({MeterModbusTCPTableID::SiemensPAC4200, siemens});
+    table_prototypes.push_back({MeterModbusTCPTableID::SiemensPAC4220, siemens});
+
     Config table_union = Config::Union<MeterModbusTCPTableID>(
         *Config::Null(),
         MeterModbusTCPTableID::None,
