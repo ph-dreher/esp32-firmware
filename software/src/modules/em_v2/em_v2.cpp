@@ -403,7 +403,7 @@ bool EMV2::has_triggered(const Config *conf, void *data)
     }
 #pragma GCC diagnostic pop
 
-    logger.printfln("has_triggered called for unexpected trigger ID %u", static_cast<uint32_t>(trigger_id));
+    logger.printfln("has_triggered called for unexpected trigger ID %lu", static_cast<uint32_t>(trigger_id));
     return false;
 }
 
@@ -478,7 +478,7 @@ void EMV2::update_all_data_struct()
 bool EMV2::get_input(uint32_t index)
 {
     if (index > 3) {
-        logger.printfln("get_input index out of range: %u > 3", index);
+        logger.printfln("get_input index out of range: %lu > 3", index);
         return false;
     }
 
@@ -488,7 +488,7 @@ bool EMV2::get_input(uint32_t index)
 void EMV2::set_sg_ready_output(uint32_t index, bool value)
 {
     if (index > 1) {
-        logger.printfln("set_sg_ready_output index out of range: %u > 1", index);
+        logger.printfln("set_sg_ready_output index out of range: %lu > 1", index);
         return;
     }
 
@@ -497,14 +497,14 @@ void EMV2::set_sg_ready_output(uint32_t index, bool value)
     // Don't check if bricklet is reachable because the setter call won't tell us.
 
     if (rc != TF_E_OK) {
-        logger.printfln("Failed to set SG Ready output %u: error %i", index, rc);
+        logger.printfln("Failed to set SG Ready output %lu: error %i", index, rc);
     }
 }
 
 bool EMV2::get_sg_ready_output(uint32_t index)
 {
     if (index > 1) {
-        logger.printfln("get_sg_ready_output index out of range: %u > 1", index);
+        logger.printfln("get_sg_ready_output index out of range: %lu > 1", index);
         return false;
     }
 
@@ -514,7 +514,7 @@ bool EMV2::get_sg_ready_output(uint32_t index)
 void EMV2::set_relay_output(uint32_t index, bool value)
 {
     if (index > 1) {
-        logger.printfln("set_relay_output index out of range: %u > 1", index);
+        logger.printfln("set_relay_output index out of range: %lu > 1", index);
         return;
     }
 
@@ -523,14 +523,14 @@ void EMV2::set_relay_output(uint32_t index, bool value)
     // Don't check if bricklet is reachable because the setter call won't tell us.
 
     if (rc != TF_E_OK) {
-        logger.printfln("Failed to set SG Ready output %u: error %i", index, rc);
+        logger.printfln("Failed to set SG Ready output %lu: error %i", index, rc);
     }
 }
 
 bool EMV2::get_relay_output(uint32_t index)
 {
     if (index > 1) {
-        logger.printfln("get_relay_output index out of range: %u > 1", index);
+        logger.printfln("get_relay_output index out of range: %lu > 1", index);
         return false;
     }
 
