@@ -620,7 +620,7 @@ MeterValueAvailability Meters::get_value_by_index(uint32_t slot, uint32_t index,
 
     const MeterSlot &meter_slot = meter_slots[slot];
 
-    *value_out = meter_slot.values.get(index)->asFloat();
+    *value_out = meter_slot.values.get(static_cast<size_t>(index))->asFloat();
 
     if (!this->meter_is_fresh(slot, max_age)) {
         return MeterValueAvailability::Stale;
@@ -662,7 +662,7 @@ MeterValueAvailability Meters::get_single_value(uint32_t slot, uint32_t kind, fl
         }
     }
 
-    *value_out = meter_slot.values.get(cached_index)->asFloat();
+    *value_out = meter_slot.values.get(static_cast<size_t>(cached_index))->asFloat();
 
     if (!this->meter_is_fresh(slot, max_age)) {
         return MeterValueAvailability::Stale;
@@ -708,7 +708,7 @@ MeterValueAvailability Meters::get_currents(uint32_t slot, float currents[INDEX_
             currents[i] = NAN;
         } else {
             currents_available++;
-            currents[i] = values.get(cached_index)->asFloat();
+            currents[i] = values.get(static_cast<size_t>(cached_index))->asFloat();
         }
     }
 
@@ -775,7 +775,7 @@ void Meters::update_value(uint32_t slot, uint32_t index, float new_value)
     MeterSlot &meter_slot = meter_slots[slot];
 
     Config &values = meter_slot.values;
-    Config *conf_val = static_cast<Config *>(values.get(index));
+    Config *conf_val = static_cast<Config *>(values.get(static_cast<size_t>(index)));
     micros_t t_now = now_us();
 
     // Think about ordering and short-circuting issues before changing this!

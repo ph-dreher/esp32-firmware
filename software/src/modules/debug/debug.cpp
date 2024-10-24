@@ -465,7 +465,7 @@ void Debug::register_events()
 
         get_spi_settings(i, apb_clk, &spi_clk, &dummy_cyclelen, &spi_mode);
 
-        Config *conf = static_cast<Config *>(conf_spi_buses->get(i));
+        Config *conf = static_cast<Config *>(conf_spi_buses->get(static_cast<size_t>(i)));
         conf->get("clk")->updateUint(spi_clk);
         conf->get("dummy_cycles")->updateUint(dummy_cyclelen);
         conf->get("spi_mode")->updateString(spi_mode);
