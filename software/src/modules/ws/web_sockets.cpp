@@ -524,7 +524,7 @@ void WebSockets::triggerHttpThread()
     // NEVER able to start the worker again.
     worker_active = WEBSOCKET_WORKER_ENQUEUED;
     errno = 0;
-    err_t err = httpd_queue_work(httpd, work, this);
+    esp_err_t err = httpd_queue_work(httpd, work, this);
     if (err == ESP_OK) {
         last_worker_run = millis();
         worker_poll_count = 0;
