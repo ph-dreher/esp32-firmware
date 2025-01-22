@@ -1,0 +1,13 @@
+diff --git "a/software/src/modules/acceleration_handler/tkapi/ip_connection.h" "b/software/src/modules/acceleration_handler/tkapi/ip_connection.h"
+index 10df9f823..9ff7f2428 100644
+--- "a/software/src/modules/acceleration_handler/tkapi/ip_connection.h"
++++ "b/software/src/modules/acceleration_handler/tkapi/ip_connection.h"
+@@ -33,7 +33,7 @@
+ 	#include <windows.h>
+ #else
+ 	#include <pthread.h>
+-	#include <semaphore.h>
++	#include "../posix/semaphore.h"
+ #endif
+ 
+ #ifdef __cplusplus

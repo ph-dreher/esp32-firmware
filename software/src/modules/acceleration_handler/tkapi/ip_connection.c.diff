@@ -1,0 +1,13 @@
+diff --git "a/software/src/modules/acceleration_handler/tkapi/ip_connection.c" "b/software/src/modules/acceleration_handler/tkapi/ip_connection.c"
+index 246348132..aa8caeb53 100644
+--- "a/software/src/modules/acceleration_handler/tkapi/ip_connection.c"
++++ "b/software/src/modules/acceleration_handler/tkapi/ip_connection.c"
+@@ -1012,7 +1012,7 @@ static void thread_destroy(Thread *thread) {
+ }
+ 
+ static bool thread_is_current(Thread *thread) {
+-	return pthread_equal(thread->handle, pthread_self()) ? true : false;
++	return pthread_equal(thread->handle, (pthread_t)xTaskGetCurrentTaskHandle()) ? true : false;
+ }
+ 
+ static void thread_join(Thread *thread) {
